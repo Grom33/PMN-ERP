@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Payments">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="Payment">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element type="xs:int" name="Id"/>
+                            <xs:element type="xs:date" name="Date"/>
+                            <xs:element type="xs:decimal" name="Sum"/>
+                            <xs:element type="xs:int" name="CustomerId"/>
+                            <xs:element type="xs:int" name="ContractId"/>
+                            <xs:element type="xs:string" name="PaymentDocument"/>
+                        </xs:sequence>
+                        <xs:attribute type="paymentType" name="target"/>
+                        <xs:attribute type="directionType" name="flow"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="paymentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOAN"/>
+            <xs:enumeration value="DEPOSIT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="directionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IN"/>
+            <xs:enumeration value="OUT"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

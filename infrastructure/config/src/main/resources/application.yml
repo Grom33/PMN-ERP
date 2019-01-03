@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+      discovery:
+        enabled: true
+        service-id: config
+  profiles:
+     active: native
+  security:
+    user:
+      password: cfgpwd
+
+server:
+  port: 9200
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://${eurekaHost:localhost}:${eurekaPort:8761}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+library:
+  auth:
+    url: /auth
+  jwt:
+    header: Authorization
+    prefix: Bearer
+    expiration: 86400 # 1 day
+    secret: s3cr3t
+    

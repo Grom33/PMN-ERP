@@ -1,0 +1,16 @@
+<Users xmlns="pmncloud"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="pmncloud users.xsd">
+    <user enabled="">
+        <Id>1</Id>
+        <Name>Ivan</Name>
+        <Password>password</Password>
+        <FullName>Ivan Ivanovich Ivanov</FullName>
+        <Email>ivan@mail.ru</Email>
+        <PhoneNumber>89052832288</PhoneNumber>
+        <Role>Admin</Role>
+        <AccountNonExpired>true</AccountNonExpired>
+        <AccountNonLocked>true</AccountNonLocked>
+        <CredentialsNonExpired>true</CredentialsNonExpired>
+    </user>
+</Users>

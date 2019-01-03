@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Users">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="user">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element type="xs:int" name="Id"/>
+                            <xs:element type="xs:string" name="Name"/>
+                            <xs:element type="xs:string" name="Password"/>
+                            <xs:element type="xs:string" name="FullName"/>
+                            <xs:element type="xs:string" name="Email"/>
+                            <xs:element type="xs:string" name="PhoneNumber"/>
+                            <xs:element type="xs:string" name="Role"/>
+                            <xs:element type="xs:boolean" name="AccountNonExpired"/>
+                            <xs:element type="xs:boolean" name="AccountNonLocked"/>
+                            <xs:element type="xs:boolean" name="CredentialsNonExpired"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:boolean" name="enabled"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

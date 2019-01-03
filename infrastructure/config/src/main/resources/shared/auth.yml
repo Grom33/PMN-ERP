@@ -1,0 +1,16 @@
+server:
+  port: 9100
+
+spring:
+  data:
+    mongodb:
+      database: library
+  mail:
+    host: smtp.mail.ru
+    port: 465
+    username: sender@host.com # email account from which mail is sent in 2FA
+    password: pwd # change
+    protocol: smtps
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true

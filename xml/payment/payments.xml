@@ -1,0 +1,36 @@
+<Payments xmlns="pmncloud"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="pmncloud payments.xsd">
+    <Payment target="LOAN" flow="IN">
+        <Id>1</Id>
+        <Date>2018-10-12 </Date>
+        <Sum>10000 </Sum>
+        <CustomerId>1 </CustomerId>
+        <ContractId>1</ContractId>
+        <PaymentDocument>ПКО № 123 от 12.10.2018 </PaymentDocument>
+    </Payment>
+    <Payment target="LOAN" flow="IN">
+        <Id>2</Id>
+        <Date>2018-09-12 </Date>
+        <Sum>9000 </Sum>
+        <CustomerId>1 </CustomerId>
+        <ContractId>1</ContractId>
+        <PaymentDocument>ПКО № 80 от 12.09.2018 </PaymentDocument>
+    </Payment>
+    <Payment target="DEPOSIT" flow="IN">
+        <Id>2</Id>
+        <Date>2018-09-12 </Date>
+        <Sum>9000 </Sum>
+        <CustomerId>2</CustomerId>
+        <ContractId>2</ContractId>
+        <PaymentDocument>ПКО № 81 от 12.09.2018 </PaymentDocument>
+    </Payment>
+    <Payment target="DEPOSIT" flow="OUT">
+        <Id>2</Id>
+        <Date>2018-09-12 </Date>
+        <Sum>9000 </Sum>
+        <CustomerId>1</CustomerId>
+        <ContractId>1</ContractId>
+        <PaymentDocument>РКО № 40 от 12.09.2018 </PaymentDocument>
+    </Payment>
+</Payments>

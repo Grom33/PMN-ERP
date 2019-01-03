@@ -1,0 +1,20 @@
+[
+  {
+    "versionUID": 1,
+    "customerId": 2,
+    "number": "333",
+    "dateCreation": "2018-04-23",
+    "payoutDate": "2018-04-23",
+    "payoffDate": null,
+    "sum": 135000,
+    "term": 18,
+    "rate": 18.2,
+    "fullLoanCoast": 21.455,
+    "status": "NORMAL",
+    "paymentInterval": "MONTHLY",
+    "complianceStatus": "GRANTED",
+    "active": true,
+    "registered": "2018-12-30T16:28:31.198064",
+    "new": false
+  }
+]

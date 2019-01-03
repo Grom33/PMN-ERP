@@ -1,0 +1,27 @@
+<Loans xmlns="pmncloud"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="pmncloud loans.xsd">
+    <Loan status="NORMAL" active="false">
+        <Id>1</Id>
+        <Number>1234 </Number>
+        <DateCreation>2018-05-23</DateCreation>
+        <PayoutDate>2018-05-24</PayoutDate>
+        <PayoffDate>2018-10-10</PayoffDate>
+        <CustomerId>2</CustomerId>
+        <Sum>60000 </Sum>
+        <Term>12</Term>
+        <Rate>18.5</Rate>
+        <FullLoanCoast>21.45</FullLoanCoast>
+    </Loan>
+    <Loan status="NORMAL" active="true">
+        <Id>1</Id>
+        <Number>1234 </Number>
+        <DateCreation>2018-05-23</DateCreation>
+        <PayoutDate>2018-05-24</PayoutDate>
+        <CustomerId>2</CustomerId>
+        <Sum>60000 </Sum>
+        <Term>12</Term>
+        <Rate>18.5</Rate>
+        <FullLoanCoast>21.45</FullLoanCoast>
+    </Loan>
+</Loans>

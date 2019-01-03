@@ -1,0 +1,24 @@
+<Deposits xmlns="pmncloud"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="pmncloud deposits.xsd">
+    <Deposit active="true">
+        <Id>1</Id>
+        <Number>1234</Number>
+        <DateCreation>2018-08-02</DateCreation>
+        <CustomerId>1</CustomerId>
+        <Sum>120000</Sum>
+        <Term>12</Term>
+        <Rate>14.3</Rate>
+        <InterestPayment>MONTHLY</InterestPayment>
+    </Deposit>
+    <Deposit active="true">
+        <Id>2</Id>
+        <Number>1235</Number>
+        <DateCreation>2018-06-05</DateCreation>
+        <CustomerId>2</CustomerId>
+        <Sum>100000</Sum>
+        <Term>18</Term>
+        <Rate>16.3</Rate>
+        <InterestPayment>MONTHLY</InterestPayment>
+    </Deposit>
+</Deposits>

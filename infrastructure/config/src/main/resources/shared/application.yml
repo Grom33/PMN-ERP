@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eurekaHost:localhost}:${eurekaPort:8761}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+library:
+  auth:
+    url: /auth
+    defaultEmail: some@host.com # default email where the 2FA code is sent
+  jwt:
+    header: Authorization
+    prefix: Bearer
+    expiration: 86400 # 1 day
+    secret: s3cr3t
+    

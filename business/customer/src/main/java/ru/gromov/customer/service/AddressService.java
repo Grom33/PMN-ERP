@@ -1,0 +1,25 @@
+package ru.gromov.customer.service;/*
+ *   Created by Gromov Vitaly (Grom33), 2018
+ *   e-mail: mr.gromov.vitaly@gmail.com
+ */
+
+
+
+import ru.gromov.customer.domain.Address;
+
+import java.util.List;
+
+public interface AddressService {
+	Address create(Address address);
+
+	Address update(Address address);
+
+	Address read(long id);
+
+	void delete(long id);
+
+	List<Address> getAllCustomerAddress(long customerId);
+
+	List<Address> getAllActiveCustomerAddress(long customerId);
+
+}

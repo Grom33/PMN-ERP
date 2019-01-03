@@ -1,0 +1,94 @@
+<Customers xmlns="pmncloud"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="pmncloud customers.xsd">
+    <Customer>
+        <Id>1</Id>
+        <Name>Иван</Name>
+        <MiddleName>Иванович</MiddleName>
+        <Surname>Иванов</Surname>
+        <MaidName/>
+        <Gender>MALE</Gender>
+        <BirthPlace>Г. Санкт-Петербург</BirthPlace>
+        <BirthDay>1982-11-23</BirthDay>
+        <INN>123456789123</INN>
+        <SNILS>123-123-123-99</SNILS>
+        <Email>qwert@mail.ru</Email>
+        <Phones>
+            <Phone phoneType="MOBILE" number="9066782334"/>
+            <Phone phoneType="HOME" number="8(812)123-22-34"/>
+            <Phone phoneType="WORK" number="8(812)777-77-77"/>
+        </Phones>
+        <Passports>
+            <Passport active="true">
+                <Serial>1104</Serial>
+                <Number>123456</Number>
+                <Date>2005-02-03</Date>
+                <PassportOffice> ОВД ПРИМОРСКОГО РАЙОНА</PassportOffice>
+                <OfficeCode>292-002</OfficeCode>
+                <ExpirationDate>2027-11-23</ExpirationDate>
+            </Passport>
+        </Passports>
+        <Addresses>
+            <Address addressType="RESIDENCE" active="true">
+                <ZipCode>123456</ZipCode>
+                <Region> Московская область</Region>
+                <City>Москва</City>
+                <Street>Прямая</Street>
+                <House>123</House>
+                <Flat>321</Flat>
+            </Address>
+            <Address addressType="REGISTRATION" active="true">
+                <ZipCode>987654</ZipCode>
+                <Region>Ленинградская область</Region>
+                <City>Санкт-Петербург</City>
+                <Street>Кривая</Street>
+                <House>345</House>
+                <Flat>32</Flat>
+            </Address>
+        </Addresses>
+    </Customer>
+    <Customer>
+        <Id>2</Id>
+        <Name>Сергей</Name>
+        <MiddleName>Петрович</MiddleName>
+        <Surname>Сидоров</Surname>
+        <MaidName/>
+        <Gender>MALE</Gender>
+        <BirthPlace>Г. Витябск</BirthPlace>
+        <BirthDay>1987-11-23</BirthDay>
+        <INN>123466689123</INN>
+        <SNILS>123-657-123-99</SNILS>
+        <Email>qwert@mail.ru</Email>
+        <Phones>
+            <Phone phoneType="MOBILE" number="9052347787"/>
+        </Phones>
+        <Passports>
+            <Passport active="true">
+                <Serial>1222</Serial>
+                <Number>128886</Number>
+                <Date>2010-02-03</Date>
+                <PassportOffice> ОВД ВОЛОГОДСКОГО РАЙОНА</PassportOffice>
+                <OfficeCode>344-002</OfficeCode>
+                <ExpirationDate>2032-11-23</ExpirationDate>
+            </Passport>
+        </Passports>
+        <Addresses>
+            <Address addressType="RESIDENCE" active="true">
+                <ZipCode>123599</ZipCode>
+                <Region> Московская область</Region>
+                <City>Москва</City>
+                <Street>Обычная</Street>
+                <House>123</House>
+                <Flat>321</Flat>
+            </Address>
+            <Address addressType="REGISTRATION" active="true">
+                <ZipCode>987654</ZipCode>
+                <Region>Вологодская область</Region>
+                <City>Вологда</City>
+                <Street>Красивая</Street>
+                <House>5</House>
+                <Flat>3</Flat>
+            </Address>
+        </Addresses>
+    </Customer>
+</Customers>

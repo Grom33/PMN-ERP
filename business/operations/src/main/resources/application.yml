@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/operations"
+    username: "postgres"
+    password: "password"
+    initialization-mode: always
+  cloud:
+    refresh:
+      refreshable: none
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+

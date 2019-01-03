@@ -1,0 +1,73 @@
+<Messages xmlns="pmncloud"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="pmncloud message.xsd">
+
+    <Mails>
+        <Mail Addressee="admin@google.ru" Subject="Hello friend">
+            <Message MsgType="USER" Priority="MEDIUM" Status="CREATED">
+                <UUID>b1a2841c-000a-437c-88b7-064ec1a628d4</UUID>
+                <Content>fff</Content>
+                <DateTimeCreated>2018-12-07T13:52:26</DateTimeCreated>
+                <DateTimeCompleted>2018-12-07T13:52:26</DateTimeCompleted>
+                <DateTimeToSend>2018-12-07T13:52:26</DateTimeToSend>
+                <UserId>1</UserId>
+            </Message>
+        </Mail>
+        <Mail Addressee="customer@google.ru" Subject="Order #123">
+            <Message MsgType="USER" Priority="MEDIUM" Status="CREATED">
+                <UUID>2a94a7ba-45ed-47a7-b5ad-82cb92c374d0</UUID>
+                <Content>
+                    Hello Dear customer !!!!
+                </Content>
+                <DateTimeCreated>2018-12-07T13:52:26</DateTimeCreated>
+                <DateTimeCompleted>2018-12-07T13:52:26</DateTimeCompleted>
+                <DateTimeToSend>2018-12-07T13:52:26</DateTimeToSend>
+                <UserId>1</UserId>
+            </Message>
+        </Mail>
+        <Mail Addressee="customer@google.ru" Subject="Order #123">
+            <Message MsgType="USER" Priority="MEDIUM" Status="CREATED">
+                <UUID>2a94a7ba-45ed-47a7-b5ad-82cb92c374d0</UUID>
+                <Content>
+                    Hello Dear customer !!!!
+                </Content>
+                <DateTimeCreated>2018-12-07T13:52:26</DateTimeCreated>
+                <DateTimeCompleted>2018-12-07T13:52:26</DateTimeCompleted>
+                <DateTimeToSend>2018-12-07T13:52:26</DateTimeToSend>
+                <UserId>2</UserId>
+            </Message>
+        </Mail>
+    </Mails>
+    <SMSes>
+        <SMS>
+            <Message MsgType="USER" Priority="MEDIUM" Status="CREATED">
+                <UUID>cffffea6-8831-420e-9001-5d2f6526ee19</UUID>
+                <Content>fff</Content>
+                <DateTimeCreated>2018-12-07T13:52:26</DateTimeCreated>
+                <DateTimeCompleted>2018-12-07T13:52:26</DateTimeCompleted>
+                <DateTimeToSend>2018-12-07T13:52:26</DateTimeToSend>
+                <UserId>1</UserId>
+            </Message>
+            <PhoneNumber>+79062820232</PhoneNumber>
+            <ResponseStatus>2018-12-07T13:52:26</ResponseStatus>
+            <StatusTime>2018-12-07T13:52:26</StatusTime>
+            <Cost>10.22</Cost>
+            <SMSId>201851-1000002</SMSId>
+        </SMS>
+        <SMS>
+            <Message MsgType="USER" Priority="MEDIUM" Status="">
+                <UUID>cffffea6-8831-420e-9001-5d2f6526ee19</UUID>
+                <Content>fff</Content>
+                <DateTimeCreated>2018-12-07T13:52:26</DateTimeCreated>
+                <DateTimeCompleted>2018-12-07T13:52:26</DateTimeCompleted>
+                <DateTimeToSend>2018-12-07T13:52:26</DateTimeToSend>
+                <UserId>1</UserId>
+            </Message>
+            <PhoneNumber>+79062820232</PhoneNumber>
+            <ResponseStatus>2018-12-07T13:52:26</ResponseStatus>
+            <StatusTime>2018-12-07T13:52:26</StatusTime>
+            <Cost>10.22</Cost>
+            <SMSId>201851-1000002</SMSId>
+        </SMS>
+    </SMSes>
+</Messages>

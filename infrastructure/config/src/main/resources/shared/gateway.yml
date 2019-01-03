@@ -1,0 +1,27 @@
+server:
+  port: 8762
+  
+zuul:
+  ignored-services:
+  - "*"
+  routes:
+    notification:
+      path: /notification/**
+      service-id: notification
+      sensitive-headers:
+      - Cookie
+      - Set-Cookie
+    auth:
+      path: /auth/**
+      service-id: auth
+      strip-prefix: false
+      sensitive-headers:
+      - Cookie
+      - Set-Cookie
+    admin:
+      path: /account/**
+      service-id: auth
+      strip-prefix: false
+      sensitive-headers:
+      - Cookie
+      - Set-Cookie

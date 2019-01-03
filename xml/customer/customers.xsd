@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Customers">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="Customer">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xs:element type="xs:int" name="Id"/>
+                            <xs:element type="xs:string" name="Name"/>
+                            <xs:element type="xs:string" name="MiddleName"/>
+                            <xs:element type="xs:string" name="Surname"/>
+                            <xs:element type="xs:string" name="MaidName"/>
+                            <xs:element type="gender" name="Gender"/>
+                            <xs:element type="xs:string" name="BirthPlace"/>
+                            <xs:element type="xs:date" name="BirthDay"/>
+                            <xs:element type="xs:string" name="INN"/>
+                            <xs:element type="xs:string" name="SNILS"/>
+                            <xs:element type="xs:string" name="Email"/>
+                            <xs:element name="Phones">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element ref="Phone"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Passports">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element ref="Passport"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Addresses">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element ref="Address"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="phoneType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MOBILE"/>
+            <xs:enumeration value="WORK"/>
+            <xs:enumeration value="HOME"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Phone">
+        <xs:complexType>
+            <xs:attribute type="phoneType" name="phoneType" use="required"/>
+            <xs:attribute type="xs:string" name="number" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Passport">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="Serial"/>
+                <xs:element type="xs:string" name="Number"/>
+                <xs:element type="xs:date" name="Date"/>
+                <xs:element type="xs:string" name="PassportOffice"/>
+                <xs:element type="xs:string" name="OfficeCode"/>
+                <xs:element type="xs:date" name="ExpirationDate"/>
+            </xs:sequence>
+            <xs:attribute type="xs:boolean" name="active"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Address">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="ZipCode"/>
+                <xs:element type="xs:string" name="Region"/>
+                <xs:element type="xs:string" name="City"/>
+                <xs:element type="xs:string" name="Street"/>
+                <xs:element type="xs:string" name="House"/>
+                <xs:element type="xs:string" name="Flat"/>
+            </xs:sequence>
+            <xs:attribute type="addressType" name="addressType"/>
+            <xs:attribute type="xs:boolean" name="active"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="addressType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RESIDENCE"/>
+            <xs:enumeration value="REGISTRATION"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

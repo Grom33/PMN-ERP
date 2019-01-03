@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Messages">
+        <xs:complexType>
+            <xs:all minOccurs="0">
+                <xs:element name="Mails">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="Mail">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element ref="Message"/>
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="Addressee"/>
+                                    <xs:attribute type="xs:string" name="Subject"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="SMSes">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="SMS">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element ref="Message"/>
+                                        <xs:element type="xs:string" name="PhoneNumber"/>
+                                        <xs:element type="xs:string" name="ResponseStatus"/>
+                                        <xs:element type="xs:string" name="StatusTime"/>
+                                        <xs:element type="xs:decimal" name="Cost"/>
+                                        <xs:element type="xs:string" name="SMSId"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Message">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="UUID" nillable="true"/>
+                <xs:element type="xs:string" name="Content">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element type="xs:dateTime" name="DateTimeCreated"/>
+                <xs:element type="xs:dateTime" name="DateTimeCompleted"/>
+                <xs:element type="xs:dateTime" name="DateTimeToSend"/>
+                <xs:element type="xs:int" name="UserId"/>
+            </xs:sequence>
+            <xs:attribute type="messageType" name="MsgType" use="required"/>
+            <xs:attribute type="priorityType" name="Priority" use="required"/>
+            <xs:attribute type="statusType" name="Status"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="messageType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYSTEM"/>
+            <xs:enumeration value="USER"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="priorityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOW"/>
+            <xs:enumeration value="MEDIUM"/>
+            <xs:enumeration value="HIGH"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CREATED"/>
+            <xs:enumeration value="IN_PROCESS"/>
+            <xs:enumeration value="SANDED"/>
+            <xs:enumeration value="DELETED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

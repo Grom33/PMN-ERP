@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Deposits">
+        <xs:complexType>
+            <xs:all minOccurs="1" >
+                <xs:element name="Deposit">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element type="xs:int" name="Id"/>
+                            <xs:element type="xs:int" name="Number"/>
+                            <xs:element type="xs:date" name="DateCreation"/>
+                            <xs:element type="xs:int" name="CustomerId"/>
+                            <xs:element type="xs:decimal" name="Sum"/>
+                            <xs:element type="xs:int" name="Term"/>
+                            <xs:element type="xs:decimal" name="Rate"/>
+                            <xs:element type="paymentType" name="InterestPayment"/>
+                        </xs:sequence>
+
+                        <xs:attribute type="xs:boolean" name="active"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="paymentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WEEKLY"/>
+            <xs:enumeration value="MONTHLY"/>
+            <xs:enumeration value="FINALLY"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

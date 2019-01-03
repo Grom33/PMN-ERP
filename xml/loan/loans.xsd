@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="pmncloud"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="pmncloud"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="Loans">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="Loan">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element type="xs:int" name="Id"/>
+                            <xs:element type="xs:int" name="Number"/>
+                            <xs:element type="xs:date" name="DateCreation"/>
+                            <xs:element type="xs:date" name="PayoutDate"/>
+                            <xs:element type="xs:date" name="PayoffDate" nillable="true" minOccurs="0"/>
+                            <xs:element type="xs:int" name="CustomerId"/>
+                            <xs:element type="xs:decimal" name="Sum"/>
+                            <xs:element type="xs:int" name="Term"/>
+                            <xs:element type="xs:decimal" name="Rate"/>
+                            <xs:element type="xs:decimal" name="FullLoanCoast"/>
+                        </xs:sequence>
+                        <xs:attribute type="statusType" name="status"/>
+                        <xs:attribute type="xs:boolean" name="active"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NORMAL"/>
+            <xs:enumeration value="RESTRUCTURE"/>
+            <xs:enumeration value="BAD_DEBT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="paymentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WEEKLY"/>
+            <xs:enumeration value="MONTHLY"/>
+            <xs:enumeration value="FINALLY"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
