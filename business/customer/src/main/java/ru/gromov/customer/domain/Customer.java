@@ -72,9 +72,9 @@ public class Customer extends AbstractBaseEntity implements Supervised {
 	@NotBlank
 	private String Email;
 
-	@Column(name = "phones")
+/*	@Column(name = "phones")
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Phone> phones;
+	private Set<Phone> phones;*/
 
 	@Override
 	public ComplianceStatus getComplianceStatus() {

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.gromov.customer.domain.Passport;
+import ru.gromov.customer.exception.PassportNotFoundException;
 import ru.gromov.customer.repository.PassportRepository;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public class PassportServiceImpl implements PassportService {
 
 	@Override
 	public Passport get(long customerId) {
-		return passportRepository.getOne(customerId);
+		return passportRepository.findById(customerId)
+				.orElseThrow(()-> new PassportNotFoundException("Passport not found!"));
 	}
 
 	@Override
@@ -29,8 +31,8 @@ public class PassportServiceImpl implements PassportService {
 	}
 
 	@Override
-	public void create(Passport passport) {
-		passportRepository.save(passport);
+	public Passport create(Passport passport) {
+		return passportRepository.save(passport);
 	}
 
 	@Override
@@ -42,5 +44,10 @@ public class PassportServiceImpl implements PassportService {
 	@Override
 	public List<Passport> getAllCustomerPassports(long customerId) {
 		return passportRepository.findAllByCustomerId(customerId);
+	}
+
+	@Override
+	public List<Passport> getAllActiveCustomerPassports(long customerId) {
+		return passportRepository.findAllByCustomerIdAndActive(customerId, true);
 	}
 }

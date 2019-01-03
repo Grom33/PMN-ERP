@@ -19,12 +19,12 @@ public class AddressRestController {
 
 	@GetMapping(value = "/api/customers/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Address> read(@PathVariable int id){
-		return addressService.getAllCustomerAddress(id);
+		return addressService.getAllActiveCustomerAddress(id);
 	}
 
 	@PostMapping(value = "/api/customers/address", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void create( @RequestBody Address address){
-		addressService.create(address);
+	public Address create( @RequestBody Address address){
+		return addressService.create(address);
 	}
 
 	@DeleteMapping(value = "/api/customers/address/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

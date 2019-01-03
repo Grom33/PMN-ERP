@@ -13,9 +13,11 @@ public interface PassportService {
 
 	Passport update(Passport passport);
 
-	void create(Passport passport);
+	Passport create(Passport passport);
 
 	void delete(long id);
 
 	List<Passport> getAllCustomerPassports(long customerId);
+
+	List<Passport> getAllActiveCustomerPassports(long customerId);
 }

@@ -31,8 +31,8 @@ public class PhoneServiceImpl implements PhoneService{
 	}
 
 	@Override
-	public void create(Phone phone) {
-		phoneRepository.save(phone);
+	public Phone create(Phone phone) {
+		return phoneRepository.save(phone);
 	}
 
 	@Override

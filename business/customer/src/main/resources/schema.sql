@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS passport;
 DROP TABLE IF EXISTS customer CASCADE ;
 DROP TABLE IF EXISTS phone;
+DROP TABLE IF EXISTS bank_account;
 DROP SEQUENCE IF EXISTS global_seq;
 
 
@@ -23,6 +24,7 @@ CREATE TABLE address
     street            VARCHAR                   NOT NULL,
     house             VARCHAR                   NOT NULL,
     flat              VARCHAR                   NOT NULL
+
 )   WITH (
     OIDS = FALSE
 ) TABLESPACE pg_default;
@@ -44,10 +46,33 @@ CREATE TABLE passport
     passport_office     VARCHAR               NOT NULL,
     office_code         VARCHAR               NOT NULL,
     expiration_date     TIMESTAMP             NOT NULL
+
 )    WITH (
          OIDS = FALSE
     )TABLESPACE pg_default;
 CREATE INDEX passport_customer_id_idx ON passport (customer_id);
+
+CREATE TABLE bank_account
+(
+    id                      BIGINT PRIMARY KEY DEFAULT nextval('global_seq'),
+    version                 INTEGER DEFAULT 0,
+    active                  BOOL DEFAULT TRUE,
+    trash                   BOOL DEFAULT FALSE,
+    created_date            BIGINT,
+    modified_date           BIGINT,
+
+    customer_id             BIGINT                NOT NULL,
+    beneficiary_name        VARCHAR               NOT NULL,
+    account_number          VARCHAR               NOT NULL,
+    bank_name               VARCHAR               NOT NULL,
+    bank_inn                VARCHAR               NOT NULL,
+    bank_bik                VARCHAR               NOT NULL,
+    correspondent_account   VARCHAR               NOT NULL
+
+)    WITH (
+         OIDS = FALSE
+    )TABLESPACE pg_default;
+CREATE INDEX bank_account_customer_id_idx ON bank_account (customer_id);
 
 CREATE TABLE customer
 (
@@ -70,6 +95,7 @@ CREATE TABLE customer
     inn                 VARCHAR,
     snils               VARCHAR               NOT NULL,
     compliance_status   VARCHAR               NOT NULL
+
 )    WITH (
 OIDS = FALSE
 )TABLESPACE pg_default;

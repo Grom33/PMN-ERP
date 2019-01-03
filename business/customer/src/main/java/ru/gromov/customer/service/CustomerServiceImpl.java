@@ -35,8 +35,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void delete(Customer customer) {
-		customerRepository.delete(customer);
+	public void delete(long id) {
+		customerRepository.deleteById(id);
 	}
 
 	@Override

@@ -18,18 +18,18 @@ public class CustomerRestController {
 
 
 	@GetMapping(value = "/api/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Customer read(@PathVariable int id){
+	public Customer read(@PathVariable int id) {
 		return customerService.get(id);
 	}
 
 	@PostMapping(value = "/api/customers", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void create( @RequestBody Customer customer){
+	public void create(@RequestBody Customer customer) {
 		customerService.create(customer);
 	}
 
 	@GetMapping(value = "/api/customers", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Customer> readAll(){
-		return customerService.getAll();
+	public List<Customer> readAll() {
+		return customerService.getAll(true);
 	}
 
 }

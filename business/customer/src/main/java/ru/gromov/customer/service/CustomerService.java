@@ -19,7 +19,7 @@ public interface CustomerService {
 
 	Customer get(long id);
 
-	void delete(Customer customer);
+	void delete(long id);
 
 	List<Customer> getAll();
 

@@ -4,6 +4,8 @@ package ru.gromov.common.domain;
  *   e-mail: mr.gromov.vitaly@gmail.com
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public interface HasId {
 	Long getId();
 

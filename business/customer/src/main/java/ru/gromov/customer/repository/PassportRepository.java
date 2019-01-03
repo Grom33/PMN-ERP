@@ -15,5 +15,7 @@ public interface PassportRepository extends JpaRepository<Passport, Long> {
 
 	List<Passport> findAllByCustomerId(long customerId);
 
+	List<Passport> findAllByCustomerIdAndActive(long customerId, boolean active);
+
 	void deletePassportById(long id);
 }

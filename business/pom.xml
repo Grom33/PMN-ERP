@@ -16,7 +16,7 @@
     <modules>
         <module>compliance</module>
         <module>customer</module>
-        <module>notifications-service</module>
+        <module>notifications</module>
         <module>operations</module>
         <module>statistics</module>
         <module>contract</module>

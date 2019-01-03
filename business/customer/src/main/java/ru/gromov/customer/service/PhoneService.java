@@ -12,7 +12,7 @@ public interface PhoneService {
 
 	Phone update(Phone phone);
 
-	void create(Phone phone);
+	Phone create(Phone phone);
 
 	void delete(long id);
 

@@ -50,12 +50,12 @@ public class AddressServiceImpl implements AddressService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Address> getAllCustomerAddress(long customerId) {
-		return addressRepository.findAllByCustomerIdAndActive(customerId, true);
+		return addressRepository.findAllByCustomerId(customerId);
 	}
 
 	@Transactional(readOnly = true)
 	@Override
 	public List<Address> getAllActiveCustomerAddress(long customerId) {
-		return addressRepository.findAllByCustomerId(customerId);
+		return addressRepository.findAllByCustomerIdAndActive(customerId, true);
 	}
 }
