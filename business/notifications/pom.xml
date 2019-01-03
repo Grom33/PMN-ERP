@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>notification-service</artifactId>
+    <artifactId>notification</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
