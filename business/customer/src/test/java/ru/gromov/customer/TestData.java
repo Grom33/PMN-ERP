@@ -229,6 +229,8 @@ public class TestData {
 		BANK_ACCOUNT_LIST_OF_CUSTOMER_1_ALL.add(BANK_ACCOUNT_IN_BASE_ID_1);
 		BANK_ACCOUNT_LIST_OF_CUSTOMER_1_ALL.add(BANK_ACCOUNT_IN_BASE_ID_2);
 
+	}
 
+	private TestData() {
 	}
 }

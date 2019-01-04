@@ -22,7 +22,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
-public class AbstractWebTest {
+public abstract class AbstractWebTest {
 
 	private static final CharacterEncodingFilter CHARACTER_ENCODING_FILTER = new CharacterEncodingFilter();
 
