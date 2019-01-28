@@ -114,7 +114,7 @@ CREATE TABLE phone
     phone_number        VARCHAR               NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customer (id) ON DELETE CASCADE
 
-)    WITH (
+) WITH (
          OIDS = FALSE
     )TABLESPACE pg_default;
 CREATE INDEX phone_customer_id_idx ON phone (customer_id);
