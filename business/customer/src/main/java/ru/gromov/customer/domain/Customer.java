@@ -14,7 +14,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
@@ -46,7 +45,7 @@ public class Customer extends AbstractBaseEntity implements Supervised {
 	private String surname;
 
 	@Column(name = "maiden_name")
-	private String MaidenName;
+	private String maidenName;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender", nullable = false)
@@ -55,22 +54,22 @@ public class Customer extends AbstractBaseEntity implements Supervised {
 
 	@Column(name = "birth_place", nullable = false)
 	@NotBlank
-	private String BirthPlace;
+	private String birthPlace;
 
 	@Column(name = "birthday", nullable = false)
 	@NotNull
-	private LocalDate Birthday;
+	private LocalDate birthday;
 
 	@Column(name = "inn")
-	private String INN;
+	private String iNN;
 
 	@Column(name = "snils", nullable = false)
 	@NotBlank
-	private String SNILS;
+	private String sNILS;
 
 	@Column(name = "email", nullable = false)
 	@NotBlank
-	private String Email;
+	private String email;
 
 /*	@Column(name = "phones")
 	@OneToMany(fetch = FetchType.LAZY)

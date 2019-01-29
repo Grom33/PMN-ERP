@@ -21,6 +21,7 @@
         <module>statistics</module>
         <module>contract</module>
         <module>common</module>
+        <module>verification</module>
     </modules>
 
     <dependencies>
