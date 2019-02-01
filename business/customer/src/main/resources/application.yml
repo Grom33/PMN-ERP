@@ -1,4 +1,8 @@
+server:
+  port: 8880
 spring:
+  profiles:
+    active: dev
   datasource:
     url: "jdbc:postgresql://localhost:5432/customer"
     username: "postgres"
@@ -7,7 +11,6 @@ spring:
   cloud:
     refresh:
       refreshable: none
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     show-sql: true

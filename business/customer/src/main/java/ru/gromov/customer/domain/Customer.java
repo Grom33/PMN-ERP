@@ -6,9 +6,12 @@ package ru.gromov.customer.domain;
  */
 
 import lombok.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import ru.gromov.common.domain.AbstractBaseEntity;
 import ru.gromov.common.domain.Supervised;
 import ru.gromov.common.domain.compliance.ComplianceStatus;
+import ru.gromov.customer.domain.enumitation.Gender;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity

@@ -6,6 +6,7 @@ package ru.gromov.customer.domain;
 
 import lombok.*;
 import ru.gromov.common.domain.AbstractBaseEntity;
+import ru.gromov.customer.domain.enumitation.PhoneType;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
