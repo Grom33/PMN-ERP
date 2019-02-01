@@ -4,7 +4,10 @@ package ru.gromov.customer.domain;
  *   e-mail: mr.gromov.vitaly@gmail.com
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import ru.gromov.common.domain.AbstractBaseEntity;
 import ru.gromov.customer.domain.enumitation.PhoneType;
 
@@ -12,18 +15,21 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@Entity
-@Table(name = "phone")
+@Getter
+@Setter
+@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(callSuper = true)
+@Builder
+@Entity
+@Table(name = "phone")
 public class Phone extends AbstractBaseEntity {
 
-	@Column(name = "customer_id", nullable = false)
-	@NotBlank
-	private long customerId;
+	@JsonBackReference(value = "customer")
+	@JoinColumn(name = "customer_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Customer customer;
 
 	@Column(name = "phone_type", nullable = false)
 	@Enumerated(EnumType.STRING)

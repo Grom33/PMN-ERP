@@ -33,9 +33,8 @@ public class RestExceptionHandler implements ProblemHandling {
     @Override
     public ResponseEntity<Problem> process(@Nullable ResponseEntity<Problem> entity,
                                            NativeWebRequest request) {
-        if (entity == null) {
-            return entity;
-        }
+        if (entity == null) return null;
+
         Problem problem = entity.getBody();
         if (!(problem instanceof ConstraintViolationProblem || problem instanceof DefaultProblem)) {
             return entity;

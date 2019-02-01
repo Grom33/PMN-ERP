@@ -7,9 +7,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.gromov.common.domain.compliance.ComplianceStatus;
+import ru.gromov.customer.dto.CustomerDto;
 import ru.gromov.customer.exception.CustomerNotFoundException;
 import ru.gromov.customer.domain.Customer;
 import ru.gromov.customer.repository.CustomerRepository;
+import ru.gromov.customer.service.mapper.CustomerMapper;
 
 import java.util.List;
 
@@ -19,19 +21,24 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private final CustomerRepository customerRepository;
 
+	private final CustomerMapper customerMapper;
+
 	@Override
 	public long create(Customer customer) {
 		return customerRepository.save(customer).getId();
 	}
 
 	@Override
-	public Customer update(Customer customer) {
-		return customerRepository.save(customer);
+	public CustomerDto update(Customer customer) {
+		return customerMapper.toDto(customerRepository.save(customer));
 	}
 
 	@Override
-	public Customer get(long id) {
-		return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("Customer not found!"));
+	public CustomerDto get(long id) {
+		return customerMapper.toDto(
+				customerRepository.findById(id)
+						.orElseThrow(() ->
+								new CustomerNotFoundException("Customer not found!")));
 	}
 
 	@Override

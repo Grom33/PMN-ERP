@@ -3,27 +3,31 @@ package ru.gromov.customer.domain;/*
  *   e-mail: mr.gromov.vitaly@gmail.com
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import ru.gromov.common.domain.AbstractBaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@Data
-@Table(name = "passport")
+@Getter
+@Setter
+@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(callSuper = true)
+@Builder
+@Table(name = "passport")
+@Entity
 public class Passport extends AbstractBaseEntity {
 
-	@Column(name = "customer_id", nullable = false)
-	@NotBlank
-	private long customerId;
+	@JsonBackReference(value = "customer")
+	@JoinColumn(name = "customer_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Customer customer;
 
 	@Column(name = "pass_serial", nullable = false)
 	@NotBlank

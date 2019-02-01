@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.gromov.customer.domain.Customer;
+import ru.gromov.customer.dto.CustomerDto;
 import ru.gromov.customer.service.CustomerService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class CustomerRestController {
 
 
 	@GetMapping(value = "/api/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Customer read(@PathVariable int id) {
+	public CustomerDto read(@PathVariable int id) {
 		return customerService.get(id);
 	}
 

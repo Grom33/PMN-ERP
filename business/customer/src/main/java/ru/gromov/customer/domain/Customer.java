@@ -5,6 +5,7 @@ package ru.gromov.customer.domain;
  *   e-mail: mr.gromov.vitaly@gmail.com
  */
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -17,72 +18,94 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@EqualsAndHashCode(callSuper = true)
+
+@Getter
+@Setter
 @NoArgsConstructor
-@Entity
-@Data
-@Table(name = "customer")
 @AllArgsConstructor
-@ToString(callSuper = true)
+@Builder
+@ToString(callSuper = true,
+        exclude = {"addresses", "passports", "phones", "bankAccounts"})
+@Entity
+@Table(name = "customer")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Customer extends AbstractBaseEntity implements Supervised {
 
-	@Column(name = "customer_uuid")
-	private UUID customerUuid;
+    @Column(name = "customer_uuid")
+    private UUID customerUuid;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "compliance_status", nullable = false)
-	private ComplianceStatus complianceStatus;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "compliance_status", nullable = false)
+    private ComplianceStatus complianceStatus;
 
-	@Column(name = "customer_name", nullable = false)
-	@NotBlank
-	private String name;
+    @Column(name = "customer_name", nullable = false)
+    @NotBlank
+    private String name;
 
-	@Column(name = "middleName", nullable = false)
-	@NotBlank
-	private String middleName;
+    @Column(name = "middleName", nullable = false)
+    @NotBlank
+    private String middleName;
 
-	@Column(name = "surname", nullable = false)
-	@NotBlank
-	private String surname;
+    @Column(name = "surname", nullable = false)
+    @NotBlank
+    private String surname;
 
-	@Column(name = "maiden_name")
-	private String maidenName;
+    @Column(name = "maiden_name")
+    private String maidenName;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "gender", nullable = false)
-	@NotNull
-	private Gender gender;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
+    @NotNull
+    private Gender gender;
 
-	@Column(name = "birth_place", nullable = false)
-	@NotBlank
-	private String birthPlace;
+    @Column(name = "birth_place", nullable = false)
+    @NotBlank
+    private String birthPlace;
 
-	@Column(name = "birthday", nullable = false)
-	@NotNull
-	private LocalDate birthday;
+    @Column(name = "birthday", nullable = false)
+    @NotNull
+    private LocalDate birthday;
 
-	@Column(name = "inn")
-	private String iNN;
+    @Column(name = "inn")
+    private String iNN;
 
-	@Column(name = "snils", nullable = false)
-	@NotBlank
-	private String sNILS;
+    @Column(name = "snils", nullable = false)
+    @NotBlank
+    private String sNILS;
 
-	@Column(name = "email", nullable = false)
-	@NotBlank
-	private String email;
+    @Column(name = "email", nullable = false)
+    @NotBlank
+    private String email;
 
-/*	@Column(name = "phones")
-	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Phone> phones;*/
+    @JsonManagedReference(value = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Address> addresses = new HashSet<>();
 
-	@Override
-	public ComplianceStatus getComplianceStatus() {
-		return complianceStatus;
-	}
+    @JsonManagedReference(value = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Passport> passports = new HashSet<>();
+
+    @JsonManagedReference(value = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Phone> phones = new HashSet<>();
+
+    @JsonManagedReference(value = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<BankAccount> bankAccounts = new HashSet<>();
+
+    @Override
+    public ComplianceStatus getComplianceStatus() {
+        return complianceStatus;
+    }
+
 }
 
 

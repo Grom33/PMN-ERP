@@ -5,24 +5,32 @@ package ru.gromov.customer.domain;
  *   e-mail: mr.gromov.vitaly@gmail.com
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import ru.gromov.common.domain.AbstractBaseEntity;
 import ru.gromov.customer.domain.enumitation.AddressType;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@Entity
+
+@Getter
+@Setter
+@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "address")
-@ToString(callSuper = true)
+@Entity
 public class Address extends AbstractBaseEntity {
 
-	@Column(name = "customer_id", nullable = false)
-	private Long customerId;
+	@JsonBackReference(value = "customer")
+	@JoinColumn(name = "customer_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Customer customer;
 
 	@Column(name = "zipCode", nullable = false)
 	@NotBlank
