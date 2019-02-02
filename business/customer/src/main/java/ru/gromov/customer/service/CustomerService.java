@@ -16,15 +16,15 @@ public interface CustomerService {
 
 	long create(Customer customer);
 
-	CustomerDto update(Customer customer);
+	Customer update(Customer customer);
 
-	CustomerDto get(long id);
+	Customer get(long id);
 
 	void delete(long id);
 
-	List<Customer> getAll();
+	List<CustomerDto> getAll();
 
-	List<Customer> getAll(ComplianceStatus status);
+	List<CustomerDto> getAll(ComplianceStatus status);
 
-	List<Customer> getAll(boolean active);
+	List<CustomerDto> getAll(boolean active);
 }

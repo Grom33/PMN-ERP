@@ -21,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private final CustomerRepository customerRepository;
 
-	private final CustomerMapper customerMapper;
+	private final CustomerMapper mapper;
 
 	@Override
 	public long create(Customer customer) {
@@ -29,16 +29,15 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public CustomerDto update(Customer customer) {
-		return customerMapper.toDto(customerRepository.save(customer));
+	public Customer update(Customer customer) {
+		return customerRepository.save(customer);
 	}
 
 	@Override
-	public CustomerDto get(long id) {
-		return customerMapper.toDto(
-				customerRepository.findById(id)
+	public Customer get(long id) {
+		return customerRepository.findById(id)
 						.orElseThrow(() ->
-								new CustomerNotFoundException("Customer not found!")));
+								new CustomerNotFoundException("Customer not found!"));
 	}
 
 	@Override
@@ -47,18 +46,18 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> getAll() {
-		return customerRepository.findAll();
+	public List<CustomerDto> getAll() {
+		return mapper.toDto(customerRepository.findAll());
 	}
 
 	@Override
-	public List<Customer> getAll(ComplianceStatus status) {
-		return customerRepository.findAllByComplianceStatus(status);
+	public List<CustomerDto> getAll(ComplianceStatus status) {
+		return mapper.toDto(customerRepository.findAllByComplianceStatus(status));
 	}
 
 	@Override
-	public List<Customer> getAll(boolean active) {
-		return customerRepository.findAllByActive(active);
+	public List<CustomerDto> getAll(boolean active) {
+		return mapper.toDto(customerRepository.findAllByActive(active));
 	}
 
 }

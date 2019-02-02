@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gromov.customer.domain.Address;
+import ru.gromov.customer.dto.AddressDto;
 import ru.gromov.customer.exception.AddressNotFoundExceptions;
 import ru.gromov.customer.repository.AddressRepository;
+import ru.gromov.customer.service.mapper.AddressMapper;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -18,44 +20,45 @@ import java.util.List;
 @Service
 @Transactional
 public class AddressServiceImpl implements AddressService {
-	@Autowired
-	private final AddressRepository addressRepository;
+    @Autowired
+    private final AddressRepository addressRepository;
+    private final AddressMapper mapper;
 
+    @Override
+    public Address create(Address address) {
+        return addressRepository.save(address);
+    }
 
-	@Override
-	public Address create(Address address) {
-		return addressRepository.save(address);
-	}
+    @Override
+    public Address update(final Address address) {
+        if (read(address.getId()).getVersionUID() != address.getVersionUID()) {
+            throw new ConcurrentModificationException();
+        }
+        return addressRepository.save(address);
+    }
 
-	@Override
-	public Address update(final Address address) {
-		if (read(address.getId()).getVersionUID() != address.getVersionUID()) {
-			throw new ConcurrentModificationException();
-		}
-		return addressRepository.save(address);
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public Address read(long id) {
+        return addressRepository.findById(id)
+                .orElseThrow(() -> new AddressNotFoundExceptions("Address not found"));
+    }
 
-	@Transactional(readOnly = true)
-	@Override
-	public Address read(long id) {
-		return addressRepository.findById(id)
-				.orElseThrow(() -> new AddressNotFoundExceptions("Address not found"));
-	}
+    @Override
+    public void delete(long id) {
+        addressRepository.deleteAddressById(id);
+    }
 
-	@Override
-	public void delete(long id) {
-		addressRepository.deleteAddressById(id);
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public List<Address> getAllCustomerAddress(long customerId) {
+        return addressRepository.findAllByCustomerId(customerId);
+    }
 
-	@Transactional(readOnly = true)
-	@Override
-	public List<Address> getAllCustomerAddress(long customerId) {
-		return addressRepository.findAllByCustomerId(customerId);
-	}
-
-	@Transactional(readOnly = true)
-	@Override
-	public List<Address> getAllActiveCustomerAddress(long customerId) {
-		return addressRepository.findAllByCustomerIdAndActive(customerId, true);
-	}
+    @Transactional(readOnly = true)
+    @Override
+    public List<AddressDto> getAllActiveCustomerAddress(long customerId) {
+        return mapper.toDto(
+                addressRepository.findAllByCustomerIdAndActive(customerId, true));
+    }
 }

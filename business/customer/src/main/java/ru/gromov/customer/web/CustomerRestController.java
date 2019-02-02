@@ -19,7 +19,7 @@ public class CustomerRestController {
 
 
 	@GetMapping(value = "/api/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public CustomerDto read(@PathVariable int id) {
+	public Customer read(@PathVariable int id) {
 		return customerService.get(id);
 	}
 
@@ -29,7 +29,7 @@ public class CustomerRestController {
 	}
 
 	@GetMapping(value = "/api/customers", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Customer> readAll() {
+	public List<CustomerDto> readAll() {
 		return customerService.getAll(true);
 	}
 

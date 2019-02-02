@@ -6,6 +6,7 @@ package ru.gromov.customer.service;/*
 
 
 import ru.gromov.customer.domain.Address;
+import ru.gromov.customer.dto.AddressDto;
 
 import java.util.List;
 
@@ -20,6 +21,6 @@ public interface AddressService {
 
 	List<Address> getAllCustomerAddress(long customerId);
 
-	List<Address> getAllActiveCustomerAddress(long customerId);
+	List<AddressDto> getAllActiveCustomerAddress(long customerId);
 
 }

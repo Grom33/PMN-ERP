@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.gromov.customer.domain.Address;
+import ru.gromov.customer.dto.AddressDto;
 import ru.gromov.customer.service.AddressService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class AddressRestController {
 	private AddressService addressService;
 
 	@GetMapping(value = "/api/customers/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Address> read(@PathVariable int id){
+	public List<AddressDto> read(@PathVariable int id){
 		return addressService.getAllActiveCustomerAddress(id);
 	}
 
